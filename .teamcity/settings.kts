@@ -25,15 +25,6 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 
 version = "2023.05"
 
-project {
-
-    buildType(Test)
-
-    params {
-        param("JsonParam", "")
-    }
-}
-
 data class MyClass(
     val name: String,
     val value: String
@@ -47,6 +38,15 @@ data class MyClass(
 Gson gson = new Gson()
 String serializedJsonString = gson.toJson(MyClass(1,"Test"))
 MyClass parsedJson = gson.fromJson(serializedJsonString, MyClass::class.java)
+
+project {
+
+    buildType(Test)
+
+    params {
+        param("JsonParam", "")
+    }
+}
 
 object Test : BuildType({
     name = "Test"
