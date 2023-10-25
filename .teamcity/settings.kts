@@ -31,7 +31,7 @@ data class MyClass(
     val value: String
 )
 
- // Gson gson = new Gson();
+ // Gson gson = Gson();
  // MyType target = new MyType();
  // String json = gson.toJson(target); // serializes target to Json
  // MyClass deserializedParam = gson.fromJson(json, MyClass::class.java); // deserializes json into target2
