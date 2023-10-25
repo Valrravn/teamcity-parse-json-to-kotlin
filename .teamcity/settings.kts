@@ -65,11 +65,7 @@ object Test : BuildType({
             id = "Create_Json"
             scriptContent = """
                 touch example.json
-                echo serializedJsonString > example.json
-                # echo { > example.json
-                # echo "  \"name\" : \"JsonParam\"," >> example.json
-                # echo "  \"value\" : \"MyValue\"" >> example.json
-                # echo } >> example.json
+                echo ${serializedJsonString} > example.json
             """.trimIndent()
         }
         /* script {
