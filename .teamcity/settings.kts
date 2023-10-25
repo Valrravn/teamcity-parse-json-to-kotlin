@@ -34,10 +34,26 @@ project {
     }
 }
 
+data class MyClass(
+    val name: String,
+    val value: String
+)
+
+ // Gson gson = new Gson();
+ // MyType target = new MyType();
+ // String json = gson.toJson(target); // serializes target to Json
+ // MyClass deserializedParam = gson.fromJson(json, MyClass::class.java); // deserializes json into target2
+
+
+
 object Test : BuildType({
     name = "Test"
 
     artifactRules = "example.json"
+
+    Gson gson = new Gson()
+    String serializedJsonString = gson.toJson(MyClass(1,"Test"))
+    MyClass parsedJson = gson.fromJson(serializedJsonString, MyClass::class.java)
 
     vcs {
         root(DslContext.settingsRoot)
@@ -49,16 +65,19 @@ object Test : BuildType({
             id = "Create_Json"
             scriptContent = """
                 touch example.json
-                echo { > example.json
-                echo "  \"name\" : \"JsonParam\"," >> example.json
-                echo "  \"value\" : \"MyValue\"" >> example.json
-                echo } >> example.json
+                echo serializedJsonString > example.json
+                # echo { > example.json
+                # echo "  \"name\" : \"JsonParam\"," >> example.json
+                # echo "  \"value\" : \"MyValue\"" >> example.json
+                # echo } >> example.json
             """.trimIndent()
         }
-        script {
-            name = "Report param"
+        /* script {
+            name = "Deserialize Json Test"
             id = "Report_param"
-            scriptContent = "echo %JsonParam%"
-        }
+            scriptContent = """
+                echo + parsedJson.name
+            """.trimIndent()
+        } */
     }
 })
