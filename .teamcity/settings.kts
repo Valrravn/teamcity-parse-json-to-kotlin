@@ -44,16 +44,14 @@ data class MyClass(
  // String json = gson.toJson(target); // serializes target to Json
  // MyClass deserializedParam = gson.fromJson(json, MyClass::class.java); // deserializes json into target2
 
-
+Gson gson = new Gson()
+String serializedJsonString = gson.toJson(MyClass(1,"Test"))
+MyClass parsedJson = gson.fromJson(serializedJsonString, MyClass::class.java)
 
 object Test : BuildType({
     name = "Test"
 
     artifactRules = "example.json"
-
-    Gson gson = new Gson()
-    String serializedJsonString = gson.toJson(MyClass(1,"Test"))
-    MyClass parsedJson = gson.fromJson(serializedJsonString, MyClass::class.java)
 
     vcs {
         root(DslContext.settingsRoot)
