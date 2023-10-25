@@ -36,8 +36,8 @@ data class MyClass(
  // String json = gson.toJson(target); // serializes target to Json
  // MyClass deserializedParam = gson.fromJson(json, MyClass::class.java); // deserializes json into target2
 
-var gson = new Gson()
-var serializedJsonString = gson.toJson(MyClass(1,"Test"))
+var gson = Gson()
+var serializedJsonString = gson.toJson(MyClass("Name-test","Value-test"))
 var parsedJson = gson.fromJson(serializedJsonString, MyClass::class.java)
 
 project {
