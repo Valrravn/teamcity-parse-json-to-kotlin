@@ -1,5 +1,6 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
+import com.google.gson.Gson
 
 /*
 The settings script is an entry point for defining a TeamCity
@@ -35,9 +36,9 @@ data class MyClass(
  // String json = gson.toJson(target); // serializes target to Json
  // MyClass deserializedParam = gson.fromJson(json, MyClass::class.java); // deserializes json into target2
 
-Gson gson = new Gson()
-String serializedJsonString = gson.toJson(MyClass(1,"Test"))
-MyClass parsedJson = gson.fromJson(serializedJsonString, MyClass::class.java)
+var gson = new Gson()
+var serializedJsonString = gson.toJson(MyClass(1,"Test"))
+var parsedJson = gson.fromJson(serializedJsonString, MyClass::class.java)
 
 project {
 
